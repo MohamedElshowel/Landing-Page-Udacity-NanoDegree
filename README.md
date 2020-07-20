@@ -2,12 +2,19 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [About](#About)
+* [Features](#Features)
 
-## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## About
 
-To get started, open `js/app.js` and start building out the app's functionality
+This is the first project of Udacity Front-End Nanodegree Scholarship to show up skills required to deal with DOM with Vanilla JavaScript (ES6).
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## Features
+
+* Build Navigation bar dynamically based on the sections loaded in the `index.html`.
+* Scroll to the section selected when clicking on its title in the navigation bar.
+* Highlight the current section in the viewport and also its item in the navigation bar.
+* Add "Scroll to Top" button when scrolling down to go to the top of the page.
+* Hide navigation bar when scrolling stops and redisplay it when scrolling again or hovering over it.
+* Sections are collapsible/expandible by clicking on the sections' headers. 

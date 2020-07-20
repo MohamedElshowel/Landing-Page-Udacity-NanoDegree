@@ -55,13 +55,24 @@ main {
     padding-top: 3em;
 }
 
+header {
+    opacity: 1;
+    transition: 1s;
+}
+
 section {
     position: relative;
-    min-height: 80vh;
 }
 
 
 /* ---- Module Rules ---- */
+.hidden {
+    opacity: 0;
+}
+
+.hidden:hover {
+    opacity: 1;
+}
 
 /* Navigation Styles*/
 .navbar__menu ul {
@@ -82,6 +93,7 @@ section {
     color: #000;
 }
 
+.navbar__menu .active-nav-item,
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
@@ -121,6 +133,14 @@ section {
         max-width: 50em;
         padding: 4em;
     }
+}
+
+section h2 {
+    cursor: pointer;
+}
+
+section h2:hover {
+    color: #cc1;
 }
 
 section:nth-of-type(even) .landing__container {
@@ -193,17 +213,17 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-section.your-active-class {
+section.active-section {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.your-active-class .landing__container::before {
+section.active-section .landing__container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.your-active-class .landing__container::after {
+section.active-section .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
@@ -220,4 +240,22 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+
+.page__scroll-top {
+    all: unset;
+    cursor: pointer;
+    background-image: linear-gradient(steelblue, rgb(33, 76, 110));
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    bottom: 5vh;
+    right: 5vh;
+    border-radius: 50%;
+    font-size: 0.7em;
+    width: 5em;
+    height: 5em;
+    text-align: center;
+    font-family: 'Oxygen', Sans-Serif;
+    z-index: 100;
+    display: none;
 }
