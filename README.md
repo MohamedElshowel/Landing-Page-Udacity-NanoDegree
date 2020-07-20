@@ -1,5 +1,7 @@
 # Landing Page Project
 
+Simple landing page with static content and dynamic navigation bar creation.
+
 ## Table of Contents
 
 * [About](#About)
