@@ -13,10 +13,14 @@
 */
 
 /**
- * @description scrolling setTimeout handler
+ * @description Scrolling setTimeout handler
  */
 let scrollHandler;
 
+/**
+ * @description Dummy sections number
+ */
+const sectionsNo = 4;
 
 /************************************************
  *               Main Function
@@ -28,8 +32,9 @@ let scrollHandler;
 (() => {
     // Add an event listener to wait till the DOM is fully loaded.
     document.addEventListener('DOMContentLoaded', () => {
-        // build the nav bar based on current sections in HTML.
+        buildSections();
         buildNavItems();
+        updateCopyright();
         // Add an event listener when the user clicks on nav items to scroll to the selected section.
         document.getElementById('navbar__list').addEventListener('click', scrollToSection);
 
@@ -46,12 +51,50 @@ let scrollHandler;
 
 
 /**
+ * @description Create dummy sections dynamically
+ */
+const buildSections = () => {
+    const sectionsContainer = document.createDocumentFragment();
+    for (let i = 1; i <= sectionsNo; i++) {
+        // Create Section 
+        const sectionHeader = 'Section ' + i;
+        const sectionElement = document.createElement('section');
+        sectionElement.id = 'section' + (i);
+        sectionElement.setAttribute('data-nav', sectionHeader);
+        if (i === 1)
+            sectionElement.classList.add('active-section');
+        sectionsContainer.appendChild(sectionElement);
+
+        // Create Section Container
+        const container = document.createElement('div');
+        container.classList.add('landing__container');
+        sectionElement.appendChild(container);
+        // Create Section Header
+        const header = document.createElement('h2');
+        header.textContent = sectionHeader;
+        container.appendChild(header);
+        // Create Section Article
+        const article = document.createElement('article');
+        container.appendChild(article);
+        // Create Section Paragraphs
+        const paragraph1 = document.createElement('p');
+        paragraph1.textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.';
+        article.appendChild(paragraph1);
+        const paragraph2 = document.createElement('p');
+        paragraph2.textContent = 'Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet porttitor tortor, eget elementum tortor mollis non.';
+        article.appendChild(paragraph2)
+    }
+    document.querySelector('main').appendChild(sectionsContainer);
+}
+
+
+/**
  * @description creates the nav items based on the sections in the HTML file.
  */
 const buildNavItems = () => {
     const navBarContainer = document.createDocumentFragment();
     const sectionsList = document.querySelectorAll('section');
-    for (const section of sectionsList) {
+    sectionsList.forEach(section => {
         // Fetch the data of each section.
         const sectionHeader = section.getAttribute('data-nav');
         const sectionId = section.getAttribute('id');
@@ -59,11 +102,18 @@ const buildNavItems = () => {
         const navElement = document.createElement('li');
         navElement.innerHTML = `<a class="menu__link" href="#${sectionId}">${sectionHeader}</a>`;
         navBarContainer.appendChild(navElement);
-    }
+    });
     // Append the created items to the DOM under the navbar list.
     document.getElementById('navbar__list').appendChild(navBarContainer);
 }
 
+
+/**
+ * @description Update copyright year in footer.
+ */
+const updateCopyright = () =>  {
+    document.querySelector('footer p').textContent += ' | ' + new Date().getFullYear();
+}
 
 
 /************************************************
