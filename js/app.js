@@ -51,7 +51,7 @@ const sectionsNo = 4;
 
 
 /**
- * @description Create dummy sections dynamically
+ * @description Create sections with dummy content dynamically
  */
 const buildSections = () => {
     const sectionsContainer = document.createDocumentFragment();

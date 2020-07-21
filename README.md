@@ -5,8 +5,8 @@ Simple landing page with static content and dynamic navigation bar creation.
 ## Table of Contents
 * [About](#About)
 * [Dependencies](#Dependencies)
-* [How To Use](#HowToUse)
-* [File Structure](#FileStructure)
+* [How To Use](#How-To-Use)
+* [File Structure](#File-Structure)
 * [References](#References)
 * [Features](#Features)
 
@@ -42,7 +42,8 @@ README.md
 
 
 ## Features
-* Build Navigation bar dynamically based on the sections loaded in the `index.html`.
+* Create sections with dummy content dynamically to the Landing Page.
+* Build Navigation bar dynamically based on the sections created.
 * Scroll to the section selected when clicking on its title in the navigation bar.
 * Highlight the current section in the viewport and also its item in the navigation bar.
 * Add "Scroll to Top" button when scrolling down to go to the top of the page.
