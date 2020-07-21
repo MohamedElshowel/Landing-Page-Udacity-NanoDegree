@@ -25,7 +25,7 @@ let scrollHandler;
 /**
  * @description self-invoked main function to add event listeners to the DOM elements.
  */
-(function main() {
+(() => {
     // Add an event listener to wait till the DOM is fully loaded.
     document.addEventListener('DOMContentLoaded', () => {
         // build the nav bar based on current sections in HTML.
@@ -48,7 +48,7 @@ let scrollHandler;
 /**
  * @description creates the nav items based on the sections in the HTML file.
  */
-function buildNavItems() {
+const buildNavItems = () => {
     const navBarContainer = document.createDocumentFragment();
     const sectionsList = document.querySelectorAll('section');
     for (const section of sectionsList) {
@@ -74,7 +74,7 @@ function buildNavItems() {
  * @description control events fired while scrolling.
  * @param {Event} evt - normal event object passed by the browser.
  */
-function controlScrollActions(evt) {
+const controlScrollActions = (evt) => {
     highlightCurrentSection(evt);
     controlNavBarVisibility(evt);
     controlScrollTopBtnVisibility(evt);
@@ -84,7 +84,7 @@ function controlScrollActions(evt) {
 /**
  * @description highlight the section when its top is near of the viewport.
  */
-function highlightCurrentSection() {
+const highlightCurrentSection = () => {
     const sectionsList = document.querySelectorAll('section');
     const currentActiveSection = document.querySelector('.active-section');
 
@@ -105,7 +105,7 @@ function highlightCurrentSection() {
  * @description highlight the nav item of the current section in the viewport.
  * @param {HTMLElement} currentSection - The current selected section in the viewport
  */
-function highlightNavItem(currentSection) {
+const highlightNavItem = (currentSection) => {
     const navItems = document.getElementsByClassName('menu__link');
     const selectedNavItem = document.querySelector('.active-nav-item');
     for (const item of navItems) {
@@ -124,7 +124,7 @@ function highlightNavItem(currentSection) {
 /**
  * @description toggle Nav Bar visibility while not scrolling
  */
-function controlNavBarVisibility() {
+const controlNavBarVisibility = () => {
     const navBarList = document.querySelector('header');
     // Clear timeout handler while scrolling.
     clearTimeout(scrollHandler);
@@ -140,7 +140,7 @@ function controlNavBarVisibility() {
 /**
  * @description toggle the "Scroll To Top" button visibility.
  */
-function controlScrollTopBtnVisibility(evt) {
+const controlScrollTopBtnVisibility = (evt) => {
     const scrollTopBtn = document.querySelector('.page__scroll-top');
     if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
         scrollTopBtn.style.display = 'block';
@@ -159,7 +159,7 @@ function controlScrollTopBtnVisibility(evt) {
  * @description scroll to the selected section and prevent the default anchor navigation behaviour.
  * @param {Event} evt - a normal event from the DOM.
  */
-function scrollToSection(evt) {
+const scrollToSection = (evt) => {
     if (evt.target.nodeName.toLowerCase() === 'a') {
         evt.preventDefault();   // Prevent the default behaviour of the anchor tag `<a>`.
         window.scrollTo({
@@ -173,7 +173,7 @@ function scrollToSection(evt) {
 /**
  * @description scrolling to the top of the page.
  */
-function scrollToTop() {
+const scrollToTop = () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -185,7 +185,7 @@ function scrollToTop() {
  * @description collapse/expand the section's paragraphs when clicking on its header.
  * @param {Event} evt - Normal `event` object passed by the browser.
  */
-function toggleSectionCollapsing(evt) {
+const toggleSectionCollapsing = (evt) => {
     const sectionBody = evt.target.parentElement.querySelector('article');
     if (sectionBody.style.display === 'none') {
         sectionBody.style.display = 'block';
@@ -193,5 +193,5 @@ function toggleSectionCollapsing(evt) {
     } else {
         sectionBody.style.display = 'none';
         evt.target.setAttribute('title', 'Click to expand the section');
-    }    
+    }
 }
