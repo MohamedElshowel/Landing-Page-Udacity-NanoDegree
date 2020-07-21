@@ -248,8 +248,8 @@ section.active-section .landing__container::after {
     background-image: linear-gradient(steelblue, rgb(33, 76, 110));
     box-shadow: 3px 3px rgba(0, 0, 0, 0.08);
     position: fixed;
-    bottom: 5vh;
-    right: 5vh;
+    bottom: 4vh;
+    right: 4vh;
     border-radius: 50%;
     font-size: 0.7em;
     width: 5em;
