@@ -91,7 +91,7 @@ function highlightCurrentSection() {
     for (const section of sectionsList) {
         const sectionRect = section.getBoundingClientRect();
         // Check if the section is in the view port and it is not the current highlighted one to avoid `reflow()` & `repaint()`.
-        if (sectionRect.top >= -1 && sectionRect.bottom <= document.documentElement.clientHeight) {
+        if (sectionRect.top > -1 && sectionRect.top <= document.documentElement.clientHeight / 2) {
             currentActiveSection.classList.remove('active-section');
             section.classList.add('active-section');
             highlightNavItem(section);
